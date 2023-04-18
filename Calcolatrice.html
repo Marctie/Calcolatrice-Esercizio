@@ -38,13 +38,15 @@
 
         .barra {
             background-color: grey;
-            color: #000;
-            border: 1px solid black;
-            width: 100%;
-            height: 50px;
+    color: #000;
+    border: 1px solid black;
+    width: 100%;
+    height: 50px;
+    padding: 0px 10px;
+    font-size: 30px;
         }
     </style>
-        <title>Document</title>
+        <title>Calcolatrice</title>
 </head>
 
 <body >
@@ -87,7 +89,7 @@
                                 <button class="marco" id="6" onclick="Addendo(6)">6</button>
                             </div>
                         <div class="col-3">
-                                <button class="operatore" id="=">=</button>
+                                <button class="operatore" id="uguale" onclick="equal()">=</button>
                             </div>
                     </div>
 
@@ -109,40 +111,38 @@
     </div>
        
 
-<h1 id="prova"></h1>
         <!-- javascript -->
     <script>
-sessionStorage['Addendo1']=0;
-sessionStorage['Addendo2']=0;
+    sessionStorage['Addendo1']='';
+    sessionStorage['Addendo2']='';
+    sessionStorage['sceltaaddendo']=1;
 
         function Addendo(x) {
-            if (sessionStorage['sceltaaddendo'] ) {
+            if (sessionStorage['sceltaaddendo']=1 ) { 
+                sessionStorage['Addendo1'] += x; 
+                // alert(sessionStorage['Addendo1'] ); 
+                  document.getElementById('risultato').innerText=sessionStorage['Addendo1']; 
+            }
+            else if (sessionStorage['sceltaaddendo']!=1 ) {
+                sessionStorage['Addendo2'] += x; 
+                // alert(sessionStorage['Addendo2'] ); 
+                document.getElementById('prova').innerHTML='OA';
+                  document.getElementById('risultato').innerText=sessionStorage['Addendo2']; 
+            }
+        }
 
-
-                sessionStorage['Addendo1'] += x;
-                alert(sessionStorage['Addendo1'] );
-              
-            } 
-            // else {
-            //     sessionStorage['Addendo2'] += x;
-            //     alert(sessionStorage['Addendo2'] += x);
-            // }
-
-
-            alert(sessionStorage['sceltaaddendo']);
-            document.getElementById('risultato').innerText = sessionStorage['Addendo1']
-                + ' >' + sessionStorage['Addendo2'];
-        };
         function cambiooperatore() {
             sessionStorage['sceltaaddendo'] = 2;
-            alert(sessionStorage['sceltaaddendo']);
-            document.getElementById('prova').innerHTML='OA'
+            // alert(sessionStorage['sceltaaddendo']);
+            document.getElementById('risultato').innerHTML = '+';
         }
+
+//     function equal(){
+//         sessionStorage['Addendo2'] = 2;
+//     document.getElementById('risultato').innerText=sessionStorage['Addendo1'] 
+//     + sessionStorage['Addendo2'] ;
+// }
+
     </script>
-
-
-
-
 </body>
-
 </html>
